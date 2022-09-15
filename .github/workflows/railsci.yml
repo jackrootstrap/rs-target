@@ -35,6 +35,6 @@ jobs:
       - name: Run Rubocop
         run: bundle exec rubocop
       - name: Run Reek
-        run: reek app lib public spec tmp
+        run: bundle exec reek app lib public spec tmp
       - name: Run Brakeman
         run: bundle exec brakeman
