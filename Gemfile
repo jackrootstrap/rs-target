@@ -15,6 +15,7 @@ end
 
 group :development do
   gem 'annotate', '~> 3.2'
+  gem 'brakeman', '~> 5.3', '>= 5.3.1'
   gem 'reek', '~> 6.1', '>= 6.1.1'
   gem 'rubocop-rails', '~> 2.12', require: false
 end
