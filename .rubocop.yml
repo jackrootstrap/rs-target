@@ -1,0 +1,13 @@
+require:
+  - rubocop-rails
+
+AllCops:
+    NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Style/Documentation:
+  Exclude:
+    - '**/**'
