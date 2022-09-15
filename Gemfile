@@ -15,4 +15,5 @@ end
 
 group :development do
   gem 'annotate', '~> 3.2'
+  gem 'rubocop-rails', '~> 2.12', require: false
 end
