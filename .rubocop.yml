@@ -4,9 +4,18 @@ require:
 AllCops:
     NewCops: enable
 
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/20220920172912_devise_token_auth_create_users.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'spec/requests/registrations_spec.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20220920172912_devise_token_auth_create_users.rb'
 
 Style/Documentation:
   Exclude:
