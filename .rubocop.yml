@@ -6,7 +6,7 @@ AllCops:
 
 Metrics/AbcSize:
   Exclude:
-    - 'db/migrate/20220920172912_devise_token_auth_create_users.rb'
+    - 'db/migrate/*'
 
 Metrics/BlockLength:
   Exclude:

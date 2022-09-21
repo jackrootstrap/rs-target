@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+
 RSpec.describe 'Registration', type: :request do
   describe 'Email registration' do
     let(:signup_url) { '/auth' }
     let(:signup_params) do
       {
-        email: 'jack.ibarra@rootstrap.com',
-        password: '12345678',
-        password_confirmation: '12345678'
+        email: Faker::Internet.email,
+        password: Faker::Internet.password
       }
     end
 
