@@ -25,5 +25,7 @@ module RsTarget
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.action_mailer.default_url_options = { host: 'localhost', port: '3000', protocol: 'http' }
+    config.action_mailer.default_options = { from: 'target@info.com' }
   end
 end
