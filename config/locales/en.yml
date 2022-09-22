@@ -33,3 +33,7 @@ en:
   api:
     errors:
       invalid_body: Please submit proper sign up data in request body.
+      confirmation_email: A confirmation email was sent to your account
+      invalid_credentials: Invalid login credentials. Please try again.
+      user_not_logged: User was not found or was not logged in.
+      email_not_blank: Email can't be blank

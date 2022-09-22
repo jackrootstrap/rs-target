@@ -27,5 +27,7 @@ module RsTarget
     config.api_only = true
     config.action_mailer.default_url_options = { host: 'localhost', port: '3000', protocol: 'http' }
     config.action_mailer.default_options = { from: 'target@info.com' }
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_namespace_key'
   end
 end
