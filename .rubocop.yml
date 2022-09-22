@@ -11,11 +11,11 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/auto_annotate_models.rake'
-    - 'spec/requests/registrations_spec.rb'
+    - 'spec/**/**'
 
 Metrics/MethodLength:
   Exclude:
-    - 'db/migrate/20220920172912_devise_token_auth_create_users.rb'
+    - 'db/migrate/*'
 
 Style/Documentation:
   Exclude:

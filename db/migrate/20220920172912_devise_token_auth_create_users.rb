@@ -22,7 +22,8 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[7.0]
       t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## User Info
-      t.string :email
+      t.string :name
+      t.string :email, null: false
       t.string :gender
 
       ## Tokens

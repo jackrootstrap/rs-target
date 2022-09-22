@@ -6,17 +6,11 @@ RSpec.describe 'Registration', type: :request do
   describe 'Email registration' do
     let(:sign_up_url) { '/auth' }
     let(:password) { Faker::Internet.password }
-    let(:sign_up_params) do
-      {
-        email: Faker::Internet.email,
-        password: password,
-        password_confirmation: password,
-        gender: Faker::Gender.type
-      }
-    end
+
+    subject { post sign_up_url, params: sign_up_params }
 
     context 'when registration params are valid' do
-      subject { post sign_up_url, params: sign_up_params }
+      let(:sign_up_params) { attributes_for(:user) }
 
       it 'returns ok status' do
         subject
@@ -39,22 +33,23 @@ RSpec.describe 'Registration', type: :request do
 
         expect(json['data']).to include_json(
           email: sign_up_params[:email],
-          gender: sign_up_params[:gender]
+          gender: sign_up_params[:gender],
+          name: sign_up_params[:name]
         )
       end
     end
 
     context 'when registration params are invalid' do
-      before do
-        post sign_up_url, params: nil
-      end
+      let(:sign_up_params) { nil }
+
+      before { subject }
 
       it 'returns unprocessable entity status' do
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
-      it 'returns unprocessable entity status' do
-        expect(errors.first).to eq 'Please submit proper sign up data in request body.'
+      it 'returns a message with the error' do
+        expect(errors.first).to eq I18n.t('api.errors.invalid_body')
       end
     end
   end

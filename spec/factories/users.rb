@@ -29,11 +29,11 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
-class User < ApplicationRecord
-  extend Devise::Models
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :confirmable, :validatable
-  include DeviseTokenAuth::Concerns::User
+FactoryBot.define do
+  factory :user do
+    name      { Faker::Name.name }
+    email     { Faker::Internet.unique.email }
+    password  { Faker::Internet.password }
+    gender    { Faker::Gender.type }
+  end
 end
