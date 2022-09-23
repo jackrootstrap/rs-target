@@ -30,4 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  api:
+    errors:
+      invalid_body: Please submit proper sign up data in request body.

@@ -4,9 +4,18 @@ require:
 AllCops:
     NewCops: enable
 
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*'
+
 Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'spec/**/**'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
 
 Style/Documentation:
   Exclude:
