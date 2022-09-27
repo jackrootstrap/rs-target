@@ -31,7 +31,7 @@ RSpec.describe 'Sign up', type: :request do
       end
     end
 
-    context 'when user has not confirmed the account' do
+    context 'when user has confirmed the account' do
       before do
         user.confirm
         subject

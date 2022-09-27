@@ -2,16 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Sign up', type: :request do
+RSpec.describe 'Sign out', type: :request do
   let(:sign_out_url) { '/auth/sign_out' }
   let(:user) { create(:user) }
 
   subject { delete sign_out_url, headers: auth_headers }
 
   context 'User signed out' do
-    it 'returns ok status' do
-      subject
+    before { subject }
 
+    it 'returns ok status' do
       expect(response).to have_http_status(:ok)
     end
   end
