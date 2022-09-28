@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: topics
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+require 'rails_helper'
+
+RSpec.describe Topic, type: :model do
+  subject { build(:topic) }
+
+  describe 'factory' do
+    it { is_expected.to be_valid }
+  end
+
+  describe 'attributes' do
+    it { is_expected.to have_db_column(:name) }
+  end
+
+  describe 'image' do
+    it 'has an attached image' do
+      expect(subject.image).to be_attached
+    end
+  end
+end

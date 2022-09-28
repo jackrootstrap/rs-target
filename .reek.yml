@@ -1,12 +1,6 @@
 detectors:
   IrresponsibleModule:
     enabled: false
-  FeatureEnvy:
-    enabled: true
-    exclude: ['DeviseTokenAuthCreateUsers#change']
-  UncommunicativeVariableName:
-    enabled: true
-    exclude: ['DeviseTokenAuthCreateUsers#change']
   UncommunicativeModuleName:
     enabled: true
     accept:
@@ -14,3 +8,6 @@ detectors:
   TooManyStatements:
     enabled: true
     max_statements: 20
+
+exclude_paths:
+  - db/migrate

@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rspec_api_documentation', '~> 6.1.0'
   gem 'rspec-json_expectations', '~> 2.2.0'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'shoulda-matchers', '~> 5.2'
 end
 
 group :development do
