@@ -15,6 +15,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem 'rspec_api_documentation', '~> 6.1.0'
   gem 'rspec-json_expectations', '~> 2.2.0'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
 end
