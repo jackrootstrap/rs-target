@@ -9,7 +9,7 @@
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
-#  email                  :string
+#  email                  :string           not null
 #  encrypted_password     :string           default(""), not null
 #  gender                 :string
 #  name                   :string
