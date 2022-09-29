@@ -14,7 +14,7 @@ RSpec.describe 'Confirmation account', type: :request do
   before { create_user_request }
 
   context 'when account is not confirmed' do
-    it 'returns a unconfirmed user' do
+    it 'returns an unconfirmed user' do
       expect(user.confirmed?).to be false
     end
   end
