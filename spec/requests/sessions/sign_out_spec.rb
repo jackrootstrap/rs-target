@@ -26,7 +26,7 @@ RSpec.describe 'Sign out', type: :request do
     end
 
     it 'returns a message with the error' do
-      expect(errors.first).to eq I18n.t('api.errors.user_not_logged')
+      expect(errors.first).to eq I18n.t('api.errors.user_not_found')
     end
   end
 end
