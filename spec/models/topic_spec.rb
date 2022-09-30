@@ -28,6 +28,7 @@ RSpec.describe Topic, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_uniqueness_of(:name) }
+    it { is_expected.to validate_presence_of(:name) }
 
     it 'has an attached image' do
       expect(subject.image).to be_attached
