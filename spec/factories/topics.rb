@@ -16,10 +16,13 @@
 FactoryBot.define do
   factory :topic do
     name { Faker::Lorem.word }
-    image { Rack::Test::UploadedFile.new(tmp_img, 'image/png') }
 
-    transient do
-      sequence(:tmp_img) { |n| Tempfile.new(["tmp_img_#{n}", 'jpg']).path }
+    trait :with_image do
+      transient do
+        sequence(:tmp_img) { |n| Tempfile.new(["tmp_img_#{n}", 'jpg']).path }
+      end
+
+      image { Rack::Test::UploadedFile.new(tmp_img, 'image/png') }
     end
   end
 end

@@ -16,7 +16,7 @@
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
-  subject { build(:topic) }
+  subject { build(:topic, :with_image) }
 
   describe 'factory' do
     it { is_expected.to be_valid }
