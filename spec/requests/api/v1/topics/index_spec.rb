@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Assignments', type: :request do
+RSpec.describe 'Topic', type: :request do
   let(:user) { create(:user) }
   let(:topics_response) { json['topics'] }
-  let!(:topics) { create_list(:topic, 10) }
+  let!(:topics) { create_list(:topic, 3) }
 
   describe 'GET /api/v1/topics' do
     subject { get api_v1_topics_path, headers: auth_headers, as: :json }
@@ -33,6 +33,16 @@ RSpec.describe 'Assignments', type: :request do
 
       it 'returns topics response objects' do
         expect(topics_response.count).to eq topics.count
+      end
+
+      it 'returns topics response keys' do
+        expect(topics_response.first.keys).to eq %w[name image]
+      end
+
+      it 'returns topics response data' do
+        topic_list = topics_response.map { |t| t['name'] }.sort
+
+        expect(topics.map(&:name).sort).to eq topic_list
       end
     end
   end
