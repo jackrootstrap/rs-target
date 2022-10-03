@@ -26,6 +26,10 @@ RSpec.describe Topic, type: :model do
     it { is_expected.to have_db_column(:name) }
   end
 
+  describe 'relationship' do
+    it { is_expected.to have_many(:targets) }
+  end
+
   describe 'validations' do
     it { is_expected.to validate_uniqueness_of(:name) }
     it { is_expected.to validate_presence_of(:name) }
