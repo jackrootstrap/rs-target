@@ -12,11 +12,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  topic_id   :bigint           not null
+#  user_id    :bigint
 #
 # Indexes
 #
 #  index_targets_on_title     (title) UNIQUE
 #  index_targets_on_topic_id  (topic_id)
+#  index_targets_on_user_id   (user_id)
 #
 # Foreign Keys
 #
@@ -38,11 +40,15 @@ RSpec.describe Target, type: :model do
     it { is_expected.to have_db_column(:latitude) }
   end
 
-  describe 'relationship' do
+  describe 'relationships' do
     it { is_expected.to belong_to(:topic) }
+    it { is_expected.to belong_to(:user) }
   end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:radius) }
+    it { is_expected.to validate_presence_of(:latitude) }
+    it { is_expected.to validate_presence_of(:longitude) }
   end
 end

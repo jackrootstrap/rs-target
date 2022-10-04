@@ -4,9 +4,9 @@ class CreateTargets < ActiveRecord::Migration[7.0]
   def change
     create_table :targets do |t|
       t.string :title, null: false
-      t.float :radius
-      t.string :latitude
-      t.string :longitude
+      t.float :radius, null: false
+      t.string :latitude, null: false
+      t.string :longitude, null: false
       t.references :topic, null: false, foreign_key: true
 
       t.timestamps
