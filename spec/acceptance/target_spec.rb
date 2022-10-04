@@ -31,4 +31,14 @@ resource 'Targets' do
       end
     end
   end
+
+  route 'api/v1/targets', 'Index target' do
+    get 'Index' do
+      example 'Index' do
+        do_request
+
+        expect(status).to eq 200
+      end
+    end
+  end
 end

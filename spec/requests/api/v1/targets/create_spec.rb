@@ -9,8 +9,6 @@ RSpec.describe 'Target', type: :request do
   let(:targets_params) { targets_attributes }
 
   describe 'POST /api/v1/target' do
-    let(:targets_params) { attributes_for(:target).merge({ topic_id: topic.id }) }
-
     subject { post api_v1_targets_path, params: targets_params, headers: auth_headers, as: :json }
 
     context 'when user is not logged in' do
