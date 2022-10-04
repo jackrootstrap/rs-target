@@ -9,9 +9,9 @@ resource 'Targets' do
   let(:topic) { create(:topic) }
   let(:request) { { target: attributes_for(:target).merge({ topic_id: topic.id }) } }
 
-  route 'api/v1/targets', 'Target index' do
+  route 'api/v1/targets', 'Create target' do
     post 'Create' do
-      example 'Create target' do
+      example 'Ok' do
         do_request(request)
 
         expect(status).to eq 200

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+json.user_id(target.user_id)
 json.title(target.title)
 json.radius(target.radius)
 json.latitude(target.latitude)

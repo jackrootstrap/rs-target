@@ -6,7 +6,7 @@ RSpec.describe 'Target', type: :request do
   let(:user) { create(:user) }
   let(:topic) { create(:topic) }
   let(:target_response) { json['target'] }
-  let(:targets_params) { attributes_for(:target).merge({ topic_id: topic.id }) }
+  let(:targets_params) { attributes_for(:target).merge({ topic_id: topic.id, user_id: user.id }) }
 
   describe 'POST /api/v1/target' do
     subject { post api_v1_targets_path, params: targets_params, headers: auth_headers, as: :json }
@@ -33,9 +33,9 @@ RSpec.describe 'Target', type: :request do
       end
 
       it 'returns targets response data' do
-        expected_keys = targets_params.keys.map(&:to_s)
+        expected_keys = targets_params.keys.map(&:to_s).sort
 
-        expect(json.keys).to eq expected_keys
+        expect(json.keys.sort).to eq expected_keys
       end
     end
   end
