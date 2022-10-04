@@ -11,10 +11,18 @@ module Api
         @target = targets.create!(target_params)
       end
 
+      def destroy
+        target.destroy!
+      end
+
       private
 
       def target_params
         params.require(:target).permit(:radius, :latitude, :longitude, :title, :topic_id)
+      end
+
+      def target
+        @target = targets.find(params[:id])
       end
 
       def targets

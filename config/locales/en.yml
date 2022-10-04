@@ -39,3 +39,4 @@ en:
       email_not_blank: Email can't be blank
       title_not_blank: Title can't be blank
       user_not_logged: You need to sign in or sign up before continuing.
+      target_not_found: Couldn't find Target

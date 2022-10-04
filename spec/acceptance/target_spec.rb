@@ -7,6 +7,7 @@ resource 'Targets' do
 
   let(:user) { create(:user) }
   let(:topic) { create(:topic) }
+  let!(:target) { create(:target, user: user, topic: topic) }
 
   route 'api/v1/targets', 'Create target' do
     post 'Create' do
@@ -38,6 +39,18 @@ resource 'Targets' do
         do_request
 
         expect(status).to eq 200
+      end
+    end
+  end
+
+  route 'api/v1/targets/:id', 'Delete target' do
+    delete 'Delete' do
+      let(:request) { { id: target.id } }
+
+      example 'Delete' do
+        do_request(request)
+
+        expect(status).to eq 204
       end
     end
   end
