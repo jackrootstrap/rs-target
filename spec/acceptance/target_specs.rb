@@ -7,14 +7,27 @@ resource 'Targets' do
 
   let(:user) { create(:user) }
   let(:topic) { create(:topic) }
-  let(:request) { { target: attributes_for(:target).merge({ topic_id: topic.id }) } }
 
   route 'api/v1/targets', 'Create target' do
     post 'Create' do
-      example 'Ok' do
-        do_request(request)
+      context 'with valid params' do
+        let(:request) { { target: attributes_for(:target).merge({ topic_id: topic.id }) } }
 
-        expect(status).to eq 200
+        example 'Ok' do
+          do_request(request)
+
+          expect(status).to eq 200
+        end
+      end
+
+      context 'with invalid params' do
+        let(:request) { { target: attributes_for(:target).except(:title) } }
+
+        example 'Bad' do
+          do_request(request)
+
+          expect(status).to eq 422
+        end
       end
     end
   end

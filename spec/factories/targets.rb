@@ -29,7 +29,7 @@ FactoryBot.define do
   factory :target do
     user
     title { Faker::Lorem.unique.word }
-    radius { Faker::Number.decimal }
+    radius { Faker::Number.decimal.to_f }
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
     topic

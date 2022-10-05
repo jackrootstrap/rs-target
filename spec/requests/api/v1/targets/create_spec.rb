@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Target', type: :request do
   let(:user) { create(:user) }
   let(:topic) { create(:topic) }
-  let(:target_response) { json['target'] }
-  let(:targets_params) { attributes_for(:target).merge({ topic_id: topic.id, user_id: user.id }) }
+  let(:targets_attributes) { attributes_for(:target, topic_id: topic.id) }
+  let(:targets_params) { targets_attributes }
 
   describe 'POST /api/v1/target' do
     subject { post api_v1_targets_path, params: targets_params, headers: auth_headers, as: :json }
@@ -26,16 +26,48 @@ RSpec.describe 'Target', type: :request do
     end
 
     context 'when user is logged in' do
-      before { subject }
+      context 'when params are valid' do
+        let(:target_user) { user.targets.first }
 
-      it 'returns success status' do
-        expect(response).to have_http_status(:success)
+        before { subject }
+
+        it 'returns success status' do
+          expect(response).to have_http_status(:success)
+        end
+
+        it 'returns targets response data' do
+          expect(json).to include_json(
+            title: targets_params[:title],
+            radius: targets_params[:radius],
+            latitude: targets_params[:latitude],
+            longitude: targets_params[:longitude],
+            topic_id: targets_params[:topic_id]
+          )
+        end
+
+        it 'updates targets users info' do
+          expect(json).to include_json(
+            title: target_user.title,
+            radius: target_user.radius,
+            latitude: target_user.latitude,
+            longitude: target_user.longitude,
+            topic_id: target_user.topic_id
+          )
+        end
       end
 
-      it 'returns targets response data' do
-        expected_keys = targets_params.keys.map(&:to_s).sort
+      context 'when params are invalid' do
+        let(:targets_params) { targets_attributes.except(:title) }
 
-        expect(json.keys.sort).to eq expected_keys
+        before { subject }
+
+        it 'returns success status' do
+          expect(response).to have_http_status(:bad_request)
+        end
+
+        it 'returns an error message' do
+          expect(errors).to include I18n.t('api.errors.title_not_blank')
+        end
       end
     end
   end

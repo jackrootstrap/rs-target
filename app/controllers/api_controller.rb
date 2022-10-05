@@ -5,16 +5,11 @@ class ApiController < ActionController::API
   include ActiveStorage::SetCurrent
   before_action :authenticate_user!
 
-  rescue_from ActiveRecord::RecordNotFound,        with: :render_not_found
-  rescue_from ActiveRecord::RecordInvalid,         with: :render_invalid
+  rescue_from Exception, with: :render_default_exception
 
   private
 
-  def render_not_found(exception)
-    render json: { error: exception.message }, status: :not_found
-  end
-
-  def render_invalid(exception)
-    render json: { message: exception.message }, status: :unprocessable_entity
+  def render_default_exception(exception)
+    render json: { errors: exception.message }, status: :bad_request
   end
 end
