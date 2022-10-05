@@ -8,6 +8,7 @@ class CreateTargets < ActiveRecord::Migration[7.0]
       t.string :latitude, null: false
       t.string :longitude, null: false
       t.references :topic, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
       t.index :title, unique: true

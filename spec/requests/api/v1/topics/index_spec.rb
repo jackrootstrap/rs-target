@@ -36,7 +36,7 @@ RSpec.describe 'Topic', type: :request do
       end
 
       it 'returns topics response keys' do
-        expect(topics_response.first.keys).to eq %w[name image]
+        expect(topics_response.first.keys).to match_array %w[id name image]
       end
 
       it 'returns topics response data' do

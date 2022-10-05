@@ -5,14 +5,14 @@
 # Table name: targets
 #
 #  id         :bigint           not null, primary key
-#  latitude   :string
-#  longitude  :string
-#  radius     :float
+#  latitude   :string           not null
+#  longitude  :string           not null
+#  radius     :float            not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  topic_id   :bigint           not null
-#  user_id    :bigint
+#  user_id    :bigint           not null
 #
 # Indexes
 #
@@ -23,6 +23,7 @@
 # Foreign Keys
 #
 #  fk_rails_...  (topic_id => topics.id)
+#  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 
@@ -34,10 +35,10 @@ RSpec.describe Target, type: :model do
   end
 
   describe 'attributes' do
-    it { is_expected.to have_db_column(:title) }
-    it { is_expected.to have_db_column(:radius) }
-    it { is_expected.to have_db_column(:longitude) }
-    it { is_expected.to have_db_column(:latitude) }
+    it { is_expected.to have_db_column(:title).with_options(null: false) }
+    it { is_expected.to have_db_column(:radius).with_options(null: false) }
+    it { is_expected.to have_db_column(:longitude).with_options(null: false) }
+    it { is_expected.to have_db_column(:latitude).with_options(null: false) }
   end
 
   describe 'relationships' do
