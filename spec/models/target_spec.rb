@@ -47,9 +47,9 @@ RSpec.describe Target, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:radius) }
-    it { is_expected.to validate_presence_of(:latitude) }
-    it { is_expected.to validate_presence_of(:longitude) }
+    it { is_expected.to validate_presence_of(:title).with_options(null: false) }
+    it { is_expected.to validate_presence_of(:radius).with_options(null: false) }
+    it { is_expected.to validate_presence_of(:latitude).with_options(null: false) }
+    it { is_expected.to validate_presence_of(:longitude).with_options(null: false) }
   end
 end
