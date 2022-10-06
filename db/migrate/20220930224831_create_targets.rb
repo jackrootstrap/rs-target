@@ -5,13 +5,13 @@ class CreateTargets < ActiveRecord::Migration[7.0]
     create_table :targets do |t|
       t.string :title, null: false
       t.float :radius, null: false
-      t.string :latitude, null: false
-      t.string :longitude, null: false
+      t.float :latitude, null: false
+      t.float :longitude, null: false
       t.references :topic, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
-      t.index :title, unique: true
+      t.index %i[title user_id], unique: true
     end
   end
 end

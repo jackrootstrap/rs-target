@@ -5,8 +5,8 @@
 # Table name: targets
 #
 #  id         :bigint           not null, primary key
-#  latitude   :string           not null
-#  longitude  :string           not null
+#  latitude   :float            not null
+#  longitude  :float            not null
 #  radius     :float            not null
 #  title      :string           not null
 #  created_at :datetime         not null
@@ -16,9 +16,9 @@
 #
 # Indexes
 #
-#  index_targets_on_title     (title) UNIQUE
-#  index_targets_on_topic_id  (topic_id)
-#  index_targets_on_user_id   (user_id)
+#  index_targets_on_title_and_user_id  (title,user_id) UNIQUE
+#  index_targets_on_topic_id           (topic_id)
+#  index_targets_on_user_id            (user_id)
 #
 # Foreign Keys
 #
@@ -29,7 +29,7 @@ class Target < ApplicationRecord
   belongs_to :user
   belongs_to :topic
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: :user }
   validates :radius, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true

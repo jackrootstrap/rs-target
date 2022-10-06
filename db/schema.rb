@@ -45,13 +45,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_224831) do
   create_table "targets", force: :cascade do |t|
     t.string "title", null: false
     t.float "radius", null: false
-    t.string "latitude", null: false
-    t.string "longitude", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.bigint "topic_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_targets_on_title", unique: true
+    t.index ["title", "user_id"], name: "index_targets_on_title_and_user_id", unique: true
     t.index ["topic_id"], name: "index_targets_on_topic_id"
     t.index ["user_id"], name: "index_targets_on_user_id"
   end
