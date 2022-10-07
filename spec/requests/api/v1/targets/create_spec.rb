@@ -27,20 +27,40 @@ RSpec.describe 'Target', type: :request do
 
     context 'when user is logged in' do
       context 'when params are valid' do
-        before { subject }
+        let(:target_user) { user.targets.first }
 
         it 'returns success status' do
+          subject
+
           expect(response).to have_http_status(:success)
         end
 
         it 'returns targets response data' do
+          subject
+
           expect(json).to include_json(
             title: targets_params[:title],
-            radius: targets_params[:radius],
-            latitude: targets_params[:latitude],
-            longitude: targets_params[:longitude],
+            radius: targets_params[:radius].to_s,
+            latitude: targets_params[:latitude].to_s,
+            longitude: targets_params[:longitude].to_s,
             topic_id: targets_params[:topic_id]
           )
+        end
+
+        it 'returns targets object data' do
+          subject
+
+          expect(json).to include_json(
+            title: target_user.title,
+            radius: target_user.radius.to_s,
+            latitude: target_user.latitude.to_s,
+            longitude: target_user.longitude.to_s,
+            topic_id: target_user.topic_id
+          )
+        end
+
+        it 'creates a new target record on the DB' do
+          expect { subject }.to change(user.reload.targets, :count).by(1)
         end
       end
 
