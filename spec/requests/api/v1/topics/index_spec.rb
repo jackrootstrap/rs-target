@@ -35,14 +35,11 @@ RSpec.describe 'Topic', type: :request do
         expect(topics_response.count).to eq topics.count
       end
 
-      it 'returns topics response keys' do
-        expect(topics_response.first.keys).to eq %w[name image]
-      end
-
       it 'returns topics response data' do
-        topic_list = topics_response.map { |t| t['name'] }.sort
-
-        expect(topics.map(&:name).sort).to eq topic_list
+        expect(topics_response.first).to include_json(
+          id: topics.first[:id],
+          name: topics.first[:name]
+        )
       end
     end
   end

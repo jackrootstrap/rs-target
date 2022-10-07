@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_141254) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_224831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_141254) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "targets", force: :cascade do |t|
+    t.string "title", null: false
+    t.float "radius", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.bigint "topic_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title", "user_id"], name: "index_targets_on_title_and_user_id", unique: true
+    t.index ["topic_id"], name: "index_targets_on_topic_id"
+    t.index ["user_id"], name: "index_targets_on_user_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -74,4 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_141254) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "targets", "topics"
+  add_foreign_key "targets", "users"
 end
