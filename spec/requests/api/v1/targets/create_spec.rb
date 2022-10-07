@@ -27,8 +27,6 @@ RSpec.describe 'Target', type: :request do
 
     context 'when user is logged in' do
       context 'when params are valid' do
-        let(:target_user) { user.targets.first }
-
         before { subject }
 
         it 'returns success status' do
@@ -42,16 +40,6 @@ RSpec.describe 'Target', type: :request do
             latitude: targets_params[:latitude],
             longitude: targets_params[:longitude],
             topic_id: targets_params[:topic_id]
-          )
-        end
-
-        it 'updates targets users info' do
-          expect(json).to include_json(
-            title: target_user.title,
-            radius: target_user.radius,
-            latitude: target_user.latitude,
-            longitude: target_user.longitude,
-            topic_id: target_user.topic_id
           )
         end
       end

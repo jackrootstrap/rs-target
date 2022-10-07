@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sessions API</title>
+    <title>Topics API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Sessions API</h1>
+      <h1>Topics API</h1>
 
       <div class="article">
-        <h2>Ok</h2>
-        <h3>DELETE auth/sign_out</h3>
+        <h2>Not logged user</h2>
+        <h3>GET api/v1/topics</h3>
 
 
 
@@ -118,19 +118,13 @@ table th, table td {
 
             <h4>Headers</h4>
             <pre class="request headers">Version: HTTP/1.0
-Access-Token: MtuPUMTbD5ZNBfqYb1qVTQ
-Client: Jd2Jh1Ix6Iuc1F14gvvEZQ
-Uid: barbar@padbergprice.com
 Host: example.org
-Content-Type: application/x-www-form-urlencoded
 Cookie: </pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE auth/sign_out</pre>
+          <pre class="request route highlight">GET api/v1/topics</pre>
 
 
-            <h4>Body</h4>
-            <pre class="request body">user[email]=barbar%40padbergprice.com&user[password]=XgEv5aQv8jD</pre>
 
 
             <h3>Response</h3>
@@ -142,14 +136,12 @@ X-Download-Options: noopen
 X-Permitted-Cross-Domain-Policies: none
 Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
-Set-Cookie: _namespace_key=Ci32i9FukqdDyt7bcJ9TsmGBBO33nTISmexRTsKX%2FB7JxbaMgWlEEYXlX%2FDbGuK7A7GG1wiq0udLm3PSriru9XG437YjmzkCP5qMly426%2BX4AXV5DpG8rsvDPSYvxbiyqrgUVQPWja%2FNUI5tGNyE45T5ulkz9Atnvtlu9vDQYxJx9Dm2uzU%3D--plyG3uBkjuaC7Cue--eBIFTui%2BI0S641g62UlKDA%3D%3D; path=/; HttpOnly; SameSite=Lax
-ETag: W/&quot;c955e57777ec0d73639dca6748560d00&quot;
-Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 829ea77b-e5d8-4e7d-94db-63667d5f0573
-X-Runtime: 0.003348
-Content-Length: 16</pre>
+Cache-Control: no-cache
+X-Request-Id: 1e462af8-4abb-41f2-9418-c176b039f1bf
+X-Runtime: 0.003439
+Content-Length: 64</pre>
             <h4>Status</h4>
-            <pre class="response status">200 OK</pre>
+            <pre class="response status">401 Unauthorized</pre>
               <h4>Body</h4>
               <pre class="response body">[binary data]</pre>
       </div>

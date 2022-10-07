@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sessions API</title>
+    <title>Topics API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Sessions API</h1>
+      <h1>Topics API</h1>
 
       <div class="article">
-        <h2>Ok</h2>
-        <h3>DELETE auth/sign_out</h3>
+        <h2>Logged user</h2>
+        <h3>GET api/v1/topics</h3>
 
 
 
@@ -118,19 +118,16 @@ table th, table td {
 
             <h4>Headers</h4>
             <pre class="request headers">Version: HTTP/1.0
-Access-Token: MtuPUMTbD5ZNBfqYb1qVTQ
-Client: Jd2Jh1Ix6Iuc1F14gvvEZQ
-Uid: barbar@padbergprice.com
+Access-Token: aZCE9OxLk-TWkRozMTh9fA
+Client: 0B-xyVU65Nh88Ah_9MRE8Q
+Uid: carrol@hermanndenesik.com
 Host: example.org
-Content-Type: application/x-www-form-urlencoded
 Cookie: </pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">DELETE auth/sign_out</pre>
+          <pre class="request route highlight">GET api/v1/topics</pre>
 
 
-            <h4>Body</h4>
-            <pre class="request body">user[email]=barbar%40padbergprice.com&user[password]=XgEv5aQv8jD</pre>
 
 
             <h3>Response</h3>
@@ -142,12 +139,18 @@ X-Download-Options: noopen
 X-Permitted-Cross-Domain-Policies: none
 Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
-Set-Cookie: _namespace_key=Ci32i9FukqdDyt7bcJ9TsmGBBO33nTISmexRTsKX%2FB7JxbaMgWlEEYXlX%2FDbGuK7A7GG1wiq0udLm3PSriru9XG437YjmzkCP5qMly426%2BX4AXV5DpG8rsvDPSYvxbiyqrgUVQPWja%2FNUI5tGNyE45T5ulkz9Atnvtlu9vDQYxJx9Dm2uzU%3D--plyG3uBkjuaC7Cue--eBIFTui%2BI0S641g62UlKDA%3D%3D; path=/; HttpOnly; SameSite=Lax
-ETag: W/&quot;c955e57777ec0d73639dca6748560d00&quot;
+access-token: aZCE9OxLk-TWkRozMTh9fA
+token-type: Bearer
+client: 0B-xyVU65Nh88Ah_9MRE8Q
+expiry: 1666364786
+uid: carrol@hermanndenesik.com
+Authorization: Bearer eyJhY2Nlc3MtdG9rZW4iOiJhWkNFOU94TGstVFdrUm96TVRoOWZBIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IjBCLXh5VlU2NU5oODhBaF85TVJFOFEiLCJleHBpcnkiOiIxNjY2MzY0Nzg2IiwidWlkIjoiY2Fycm9sQGhlcm1hbm5kZW5lc2lrLmNvbSJ9
+Set-Cookie: _namespace_key=QeIs%2FjPy%2BCY420VINk6BFYvWNDKvcJ5l5yHL1ogeSwlAfFS0DF9y39DGuOs8%2FJKl8YrifdLMEevnA5aPjdj2nyiPSA6yg4Bvdddq2fCQ8OrZNCTBA76sSU0tyDtapYphaVQyi85oyh0tbImROC1ls%2FYpK64i32slJtKg2dqZlbpKRPEGrQcHM5mO%2FQSMUa2Q96Cq4B7xjk1utX5zyivL7ksNBLGoQI4CeLfq01keexDDslSDQb0EROrmJ2TCfijfXH%2BhvIzwnBC1kyYynKA2s4EzYdR9Og%3D%3D--fRC8aeo0Yr0RL05T--otAhF1ACTkB81jIIv9CNaw%3D%3D; path=/; HttpOnly; SameSite=Lax
+ETag: W/&quot;d5eea23a2f7ca3f36d2a5dbf3ab2532a&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 829ea77b-e5d8-4e7d-94db-63667d5f0573
-X-Runtime: 0.003348
-Content-Length: 16</pre>
+X-Request-Id: bda31d0f-f6bc-4fe8-84ac-624ab65b0765
+X-Runtime: 0.006307
+Content-Length: 13</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>

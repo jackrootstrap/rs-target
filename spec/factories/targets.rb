@@ -29,9 +29,9 @@ FactoryBot.define do
   factory :target do
     user
     title { Faker::Lorem.unique.word }
-    radius { Faker::Number.decimal.to_f }
-    latitude { Faker::Address.latitude }
-    longitude { Faker::Address.longitude }
+    radius { rand(0.1...1000.0).to_f }
+    latitude { Faker::Address.latitude.round(13) }
+    longitude { Faker::Address.longitude.round(13) }
     topic
   end
 end
