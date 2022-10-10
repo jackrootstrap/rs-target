@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Topics API</title>
+    <title>Targets API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Topics API</h1>
+      <h1>Targets API</h1>
 
       <div class="article">
-        <h2>Not logged user</h2>
-        <h3>GET api/v1/topics</h3>
+        <h2>Ok</h2>
+        <h3>POST api/v1/targets</h3>
 
 
 
@@ -118,13 +118,19 @@ table th, table td {
 
             <h4>Headers</h4>
             <pre class="request headers">Version: HTTP/1.0
+Access-Token: bvOz3dK23q_C35No4W_UxA
+Client: 60eQ5agQ9TFl32HkPH9DrQ
+Uid: brandon@schulist.co
 Host: example.org
+Content-Type: application/x-www-form-urlencoded
 Cookie: </pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET api/v1/topics</pre>
+          <pre class="request route highlight">POST api/v1/targets</pre>
 
 
+            <h4>Body</h4>
+            <pre class="request body">target[title]=sapiente&target[radius]=698.9&target[latitude]=-49.9704571136&target[longitude]=143.3083311113&target[topic_id]=291</pre>
 
 
             <h3>Response</h3>
@@ -136,12 +142,20 @@ X-Download-Options: noopen
 X-Permitted-Cross-Domain-Policies: none
 Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
-Cache-Control: no-cache
-X-Request-Id: b8dbec72-5960-46ba-9311-fec04ba64e72
-X-Runtime: 0.000874
-Content-Length: 64</pre>
+access-token: bvOz3dK23q_C35No4W_UxA
+token-type: Bearer
+client: 60eQ5agQ9TFl32HkPH9DrQ
+expiry: 1666619802
+uid: brandon@schulist.co
+Authorization: Bearer eyJhY2Nlc3MtdG9rZW4iOiJidk96M2RLMjNxX0MzNU5vNFdfVXhBIiwidG9rZW4tdHlwZSI6IkJlYXJlciIsImNsaWVudCI6IjYwZVE1YWdROVRGbDMySGtQSDlEclEiLCJleHBpcnkiOiIxNjY2NjE5ODAyIiwidWlkIjoiYnJhbmRvbkBzY2h1bGlzdC5jbyJ9
+Set-Cookie: _namespace_key=hOlmJbZC%2BPLNrbfU8it7Xq%2FVOR0AT%2FmqGsLGTik2kmPkr8XIwkRJjv%2Bpkg2MkxvjWwoYeBpZiaxbKVijulfPGu9N%2BtOlmlNvDfITEuy9QzPXqywZLgmCdXZBwM7PRErrOVmue1ne5MN5AqVOz3x7OXWW8ZinAaaVW27qccX21pdFYZjx%2Fm9AA6fhrYycQ7I0oPdE51nhNYfhgXJS50GYhYHLNt%2Fpafa4%2F2TGmW8YvkpwxxVKhYyxbqD65kqdam1kxzW8CDGov%2F2GcnGDgjQbwWfS%2FxLXtxTS9f0%3D--%2BfBqJweNKeuIliH3--5Imwyh%2FoHA5IrYYqkT8uJg%3D%3D; path=/; HttpOnly; SameSite=Lax
+ETag: W/&quot;f14142139bd630e5ce06c899647be9a8&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 742587d5-db3e-469c-b86c-cb8ed926d383
+X-Runtime: 0.017245
+Content-Length: 109</pre>
             <h4>Status</h4>
-            <pre class="response status">401 Unauthorized</pre>
+            <pre class="response status">200 OK</pre>
               <h4>Body</h4>
               <pre class="response body">[binary data]</pre>
       </div>
