@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-resource 'Sessions' do
+resource 'Registrations' do
   let(:user_attributes) { attributes_for(:user) }
 
   route 'auth/', 'Session' do

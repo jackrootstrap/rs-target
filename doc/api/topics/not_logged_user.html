@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sessions API</title>
+    <title>Topics API</title>
     <meta charset="utf-8">
     <style>
       
@@ -106,11 +106,11 @@ table th, table td {
   </head>
   <body>
     <div class="container">
-      <h1>Sessions API</h1>
+      <h1>Topics API</h1>
 
       <div class="article">
-        <h2>Invalid params</h2>
-        <h3>POST auth/</h3>
+        <h2>Not logged user</h2>
+        <h3>GET api/v1/topics</h3>
 
 
 
@@ -119,15 +119,12 @@ table th, table td {
             <h4>Headers</h4>
             <pre class="request headers">Version: HTTP/1.0
 Host: example.org
-Content-Type: application/x-www-form-urlencoded
 Cookie: </pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">POST auth/</pre>
+          <pre class="request route highlight">GET api/v1/topics</pre>
 
 
-            <h4>Body</h4>
-            <pre class="request body">user[name]=Dan+Greenfelder+V&user[email]=&user[password]=0mPuJw0p8&user[gender]=Genderfluid</pre>
 
 
             <h3>Response</h3>
@@ -140,11 +137,11 @@ X-Permitted-Cross-Domain-Policies: none
 Referrer-Policy: strict-origin-when-cross-origin
 Content-Type: application/json; charset=utf-8
 Cache-Control: no-cache
-X-Request-Id: 5d1a1fb7-3f36-405a-8878-82ce4bd6041c
-X-Runtime: 0.273616
-Content-Length: 271</pre>
+X-Request-Id: b8dbec72-5960-46ba-9311-fec04ba64e72
+X-Runtime: 0.000874
+Content-Length: 64</pre>
             <h4>Status</h4>
-            <pre class="response status">422 Unprocessable Entity</pre>
+            <pre class="response status">401 Unauthorized</pre>
               <h4>Body</h4>
               <pre class="response body">[binary data]</pre>
       </div>

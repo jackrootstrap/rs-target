@@ -44,9 +44,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_224831) do
 
   create_table "targets", force: :cascade do |t|
     t.string "title", null: false
-    t.float "radius", null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.decimal "radius", precision: 6, scale: 1, null: false
+    t.decimal "latitude", precision: 15, scale: 10, null: false
+    t.decimal "longitude", precision: 15, scale: 10, null: false
     t.bigint "topic_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
