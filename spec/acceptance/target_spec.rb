@@ -45,12 +45,25 @@ resource 'Targets' do
 
   route 'api/v1/targets/:id', 'Delete target' do
     delete 'Delete' do
-      let(:request) { { id: target.id } }
+      context 'when target belongs to user' do
+        let(:request) { { id: target.id } }
 
-      example 'Delete' do
-        do_request(request)
+        example 'Delete' do
+          do_request(request)
 
-        expect(status).to eq 204
+          expect(status).to eq 200
+        end
+      end
+
+      context 'when target does not belong to user' do
+        let(:new_target) { create(:target) }
+        let(:request) { { id: new_target.id } }
+
+        example 'Delete' do
+          do_request(request)
+
+          expect(status).to eq 400
+        end
       end
     end
   end
