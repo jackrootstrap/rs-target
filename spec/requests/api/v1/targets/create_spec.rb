@@ -65,16 +65,32 @@ RSpec.describe 'Target', type: :request do
       end
 
       context 'when params are invalid' do
-        let(:targets_params) { targets_attributes.except(:title) }
+        context 'when a target attribute is missing ' do
+          let(:targets_params) { targets_attributes.except(:title) }
 
-        before { subject }
+          before { subject }
 
-        it 'returns success status' do
-          expect(response).to have_http_status(:unprocessable_entity)
+          it 'returns unprocessable entity status' do
+            expect(response).to have_http_status(:unprocessable_entity)
+          end
+
+          it 'returns an error message' do
+            expect(errors).to include I18n.t('api.errors.title_not_blank')
+          end
         end
 
-        it 'returns an error message' do
-          expect(errors).to include I18n.t('api.errors.title_not_blank')
+        context 'when user exceeds max targets limit' do
+          let!(:targets) { FactoryBot.create_list(:target, 10, user: user) }
+
+          before { subject }
+
+          it 'returns unprocessable entity status' do
+            expect(response).to have_http_status(:unprocessable_entity)
+          end
+
+          it 'returns an error message' do
+            expect(errors).to include I18n.t('api.errors.max_user_targets')
+          end
         end
       end
     end
