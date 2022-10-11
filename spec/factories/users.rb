@@ -16,6 +16,7 @@
 #  provider               :string           default("email"), not null
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  targets_count          :integer          default(0), not null
 #  tokens                 :json
 #  uid                    :string           default(""), not null
 #  unconfirmed_email      :string

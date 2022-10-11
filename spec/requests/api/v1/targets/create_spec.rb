@@ -80,7 +80,7 @@ RSpec.describe 'Target', type: :request do
         end
 
         context 'when user exceeds max targets limit' do
-          let!(:targets) { FactoryBot.create_list(:target, 10, user: user) }
+          let!(:targets) { create_list(:target, 10, user: user) }
 
           before { subject }
 

@@ -26,7 +26,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Target < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :topic
 
   validates :title, presence: true, uniqueness: { scope: :user }
@@ -36,6 +36,6 @@ class Target < ApplicationRecord
   validate :validate_targets, on: :create
 
   def validate_targets
-    errors.add(:targets, I18n.t('api.errors.max_user_targets')) if user.targets.count >= 10
+    errors.add(:targets, I18n.t('api.errors.max_user_targets')) if user.targets_count >= 10
   end
 end
