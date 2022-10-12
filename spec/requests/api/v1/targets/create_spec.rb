@@ -89,7 +89,7 @@ RSpec.describe 'Target', type: :request do
           end
 
           it 'returns an error message' do
-            expect(errors).to include I18n.t('api.errors.max_user_targets')
+            expect(errors).to include I18n.t('api.errors.max_user_targets', max_user_targets: Target::MAX_USER_TARGETS)
           end
         end
       end

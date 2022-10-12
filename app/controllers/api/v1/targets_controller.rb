@@ -8,7 +8,7 @@ module Api
       end
 
       def create
-        @target = targets.create!(target_params)
+        @target = TargetService::Creator.new(targets, target_params).call
       end
 
       def destroy
