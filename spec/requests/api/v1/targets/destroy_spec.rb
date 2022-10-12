@@ -41,7 +41,7 @@ RSpec.describe 'Target', type: :request do
           expect(json['message']).to eq I18n.t('api.target.deleted')
         end
 
-        it 'destroy a target record on the DB' do
+        it 'deletes the target record from the DB' do
           expect { subject }.to change(user.reload.targets, :count).by(-1)
         end
       end

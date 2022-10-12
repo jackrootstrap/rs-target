@@ -48,7 +48,7 @@ resource 'Targets' do
       context 'when target belongs to user' do
         let(:request) { { id: target.id } }
 
-        example 'Delete' do
+        example 'Successful delete' do
           do_request(request)
 
           expect(status).to eq 200
@@ -59,7 +59,7 @@ resource 'Targets' do
         let(:new_target) { create(:target) }
         let(:request) { { id: new_target.id } }
 
-        example 'Delete' do
+        example 'Unsuccessful delete' do
           do_request(request)
 
           expect(status).to eq 400
