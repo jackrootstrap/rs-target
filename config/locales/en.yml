@@ -40,5 +40,6 @@ en:
       title_not_blank: Title can't be blank
       user_not_logged: You need to sign in or sign up before continuing.
       target_not_found: Couldn't find Target
+      max_user_targets: Maximum %{max_user_targets} targets per user
     target:
       deleted: Target was successfully deleted

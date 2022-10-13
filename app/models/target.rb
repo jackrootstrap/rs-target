@@ -26,11 +26,14 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Target < ApplicationRecord
-  belongs_to :user
+  MAX_USER_TARGETS = 10
+
+  belongs_to :user, counter_cache: true
   belongs_to :topic
 
   validates :title, presence: true, uniqueness: { scope: :user }
   validates :radius, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
+  validates_with TargetValidator, on: :create
 end

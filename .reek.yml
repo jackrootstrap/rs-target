@@ -8,6 +8,8 @@ detectors:
   TooManyStatements:
     enabled: true
     max_statements: 20
+  UtilityFunction:
+    enabled: false
 
 exclude_paths:
   - db/migrate

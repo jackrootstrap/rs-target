@@ -28,7 +28,7 @@
 require 'rails_helper'
 
 RSpec.describe Target, type: :model do
-  subject { build(:target) }
+  subject { create(:target) }
 
   describe 'factory' do
     it { is_expected.to be_valid }
