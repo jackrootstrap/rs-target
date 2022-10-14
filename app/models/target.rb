@@ -30,6 +30,8 @@ class Target < ApplicationRecord
 
   belongs_to :user, counter_cache: true
   belongs_to :topic
+  has_noticed_notifications model_name: 'Notification'
+  has_many :notifications, through: :user, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :user }
   validates :radius, presence: true

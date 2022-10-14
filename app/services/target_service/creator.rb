@@ -8,7 +8,9 @@ module TargetService
     end
 
     def call
-      @targets.create!(@target_params)
+      target = @targets.create!(@target_params)
+      TargetService::CompatibleTargetFinder.new(target).call
+      target
     end
   end
 end
