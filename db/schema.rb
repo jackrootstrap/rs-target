@@ -43,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_213434) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "recipient_type", null: false
     t.bigint "recipient_id", null: false
     t.string "type", null: false
     t.jsonb "params"
@@ -51,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_213434) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
-    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
   end
 
   create_table "targets", force: :cascade do |t|

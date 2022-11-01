@@ -28,7 +28,7 @@
 FactoryBot.define do
   factory :target do
     user
-    title { Faker::Lorem.unique.word }
+    sequence(:title) { |n| "#{Faker::Lorem.unique.word}#{n}" }
     radius { rand(0.1...1000.0).round(1) }
     latitude { Faker::Address.latitude.round(10) }
     longitude { Faker::Address.longitude.round(10) }

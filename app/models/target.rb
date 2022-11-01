@@ -28,10 +28,12 @@
 class Target < ApplicationRecord
   MAX_USER_TARGETS = 10
 
+  acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
+
   belongs_to :user, counter_cache: true
   belongs_to :topic
+
   has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :user, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :user }
   validates :radius, presence: true

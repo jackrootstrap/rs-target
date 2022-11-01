@@ -39,5 +39,5 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   has_many :targets, dependent: :destroy
-  has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :notifications, foreign_key: 'recipient_id', dependent: :destroy, inverse_of: :recipient
 end

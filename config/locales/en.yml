@@ -43,6 +43,6 @@ en:
       max_user_targets: Maximum %{max_user_targets} targets per user
     target:
       deleted: Target was successfully deleted
-  notifications:
-    target_notification:
-      message: You have a new match! %{user}
+    notifications:
+      target_notification:
+        message: You have a new match! %{user}

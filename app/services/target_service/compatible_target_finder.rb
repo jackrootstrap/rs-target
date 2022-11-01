@@ -19,13 +19,8 @@ module TargetService
     end
 
     def find_compatible_targets
-      match_targets.each do |match_target|
-        distance = Geocoder::Calculations.distance_between([@target.latitude, @target.longitude],
-                                                           [match_target.latitude, match_target.longitude])
-        if distance <= @target.radius + match_target.radius
-          TargetNotification.with(user: @user).deliver_later(match_target.user)
-        end
-      end
+      compatible_targets = match_targets.within(@target.radius, origin: [@target.latitude, @target.longitude])
+      TargetNotification.with(user: @user).deliver_later(compatible_targets.map(&:user))
     end
   end
 end

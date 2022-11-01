@@ -22,8 +22,12 @@ RSpec.describe 'Target', type: :request do
         expect(response).to have_http_status(:success)
       end
 
-      it 'sends a notification to the matching target owners' do
+      it 'creates a notification to the matching target owners' do
         expect { subject }.to change(user.notifications, :count).by(1)
+      end
+
+      it 'sends an email to the matching target owners' do
+        expect { subject }.to have_enqueued_job(Noticed::DeliveryMethods::Email)
       end
     end
 
@@ -39,6 +43,10 @@ RSpec.describe 'Target', type: :request do
 
       it 'does not send any notification' do
         expect { subject }.to_not change(user.notifications, :count)
+      end
+
+      it 'does not send any email' do
+        expect { subject }.to_not have_enqueued_job(Noticed::DeliveryMethods::Email)
       end
     end
   end

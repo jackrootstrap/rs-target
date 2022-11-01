@@ -15,7 +15,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 1.6', '>= 1.6.6'
-  gem 'geocoder', '~> 1.8.1'
+  gem 'geokit-rails', '~> 2.3', '>= 2.3.2'
   gem 'jbuilder', '~> 2.11', '>= 2.11.5'
   gem 'noticed', '~> 1.6'
   gem 'rspec_api_documentation', '~> 6.1.0'
