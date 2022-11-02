@@ -15,7 +15,7 @@
 #
 FactoryBot.define do
   factory :topic do
-    name { Faker::Lorem.unique.word }
+    sequence(:name) { |n| "#{Faker::Lorem.word}#{n}" }
 
     trait :with_image do
       transient do
