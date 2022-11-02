@@ -33,5 +33,20 @@ FactoryBot.define do
     latitude { Faker::Address.latitude.round(10) }
     longitude { Faker::Address.longitude.round(10) }
     topic
+
+    trait :with_south_location do
+      latitude { rand(10.0..20.0) }
+      longitude { rand(-20.0..-10.0) }
+    end
+
+    trait :with_north_location do
+      latitude { rand(10.0..20.0) }
+      longitude { rand(10.0..20.0) }
+    end
+
+    trait :with_center_location do
+      latitude { 0.0 }
+      longitude { 0.0 }
+    end
   end
 end
