@@ -29,4 +29,6 @@ class Conversation < ApplicationRecord
     where('((sender_id = ? AND receiver_id IN (?)) OR (receiver_id = ? AND sender_id IN (?))) ' \
           'AND topic_id = ?', sender_id, receiver_ids, sender_id, receiver_ids, topic_id)
   }
+
+  scope :user_conversations, ->(user_id) { where('sender_id = ? OR receiver_id = ?', user_id, user_id) }
 end

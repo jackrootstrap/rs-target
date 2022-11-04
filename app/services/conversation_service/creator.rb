@@ -2,6 +2,8 @@
 
 module ConversationService
   class Creator
+    attr_reader :sender, :receivers, :topic, :conversations
+
     def initialize(sender:, receivers:, topic:)
       @sender = sender
       @receivers = receivers
@@ -10,10 +12,10 @@ module ConversationService
     end
 
     def call
-      @receivers.each do |receiver|
-        @conversations << Conversation.create(sender: @sender, receiver: receiver, topic: @topic)
+      conversation_params = receivers.map do |receiver|
+        { sender: sender, receiver: receiver, topic: topic }
       end
-      @conversations
+      Conversation.create!(conversation_params)
     end
   end
 end
