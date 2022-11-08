@@ -28,8 +28,7 @@ module TargetService
     end
 
     def current_conversations
-      @current_conversations ||= ConversationBetweenUsersQuery.new(@user.id, compatible_users.pluck(:id),
-                                                                   @topic.id).call
+      @current_conversations ||= UserConversationsQuery.between(@user.id, compatible_users.pluck(:id), @topic.id)
     end
 
     def user_conversations_ids
@@ -37,7 +36,6 @@ module TargetService
     end
 
     def targeted_users
-      # @targeted_users ||= compatible_users.reject { |user| user_conversations_ids.include?(user.id) }
       @targeted_users ||= User.where(id: compatible_users.pluck(:id)).where.not(id: user_conversations_ids)
     end
   end

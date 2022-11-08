@@ -7,7 +7,11 @@ RSpec.describe 'Conversation', type: :request do
   let(:receivers) { create_list(:user, 4) }
   let(:topic) { create(:topic) }
   let(:conversations_response) { json['conversations'] }
-  let!(:conversations) { ConversationService::Creator.new(sender: user, receivers: receivers, topic: topic).call }
+  let!(:conversations) do
+    receivers.map do |receiver|
+      create(:conversation, sender: user, receiver: receiver, topic: topic)
+    end
+  end
 
   describe 'GET /api/v1/conversations' do
     subject { get api_v1_conversations_path, headers: auth_headers, as: :json }

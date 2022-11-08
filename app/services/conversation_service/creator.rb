@@ -12,10 +12,15 @@ module ConversationService
     end
 
     def call
-      conversation_params = receivers.map do |receiver|
+      Conversation.create!(conversation_params)
+    end
+
+    private
+
+    def conversation_params
+      @conversation_params ||= receivers.map do |receiver|
         { sender: sender, receiver: receiver, topic: topic }
       end
-      Conversation.create!(conversation_params)
     end
   end
 end

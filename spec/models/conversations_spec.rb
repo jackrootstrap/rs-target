@@ -38,4 +38,11 @@ RSpec.describe Conversation, type: :model do
     it { is_expected.to belong_to(:receiver) }
     it { is_expected.to belong_to(:topic) }
   end
+
+  describe 'index' do
+    it { is_expected.to have_db_index(:receiver_id) }
+    it { is_expected.to have_db_index(:sender_id) }
+    it { is_expected.to have_db_index(:topic_id) }
+    it { is_expected.to have_db_index(%i[sender_id receiver_id topic_id]) }
+  end
 end

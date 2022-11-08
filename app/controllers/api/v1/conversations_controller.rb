@@ -4,7 +4,7 @@ module Api
   module V1
     class ConversationsController < ApiController
       def index
-        @conversations = UserConversationsQuery.new(current_user.id).call
+        @conversations = UserConversationsQuery.for_user(current_user.id)
       end
     end
   end
