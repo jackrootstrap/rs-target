@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     registrations: 'api/v1/registrations'
   }
 
+  get 'about', to: 'pages#about'
+
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       resources :topics, only: [:index]
