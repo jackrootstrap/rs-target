@@ -4,7 +4,7 @@ module Api
   module V1
     class MessagesController < ApiController
       def create
-        @message = conversation.messages.create!(message_params.merge({ user_id: current_user.id }))
+        @message = conversation.messages.create!(body: message_params[:body], user_id: current_user.id)
       end
 
       private
@@ -14,7 +14,11 @@ module Api
       end
 
       def conversation
-        @conversation = Conversation.find(params[:conversation_id])
+        @conversation ||= user_conversations.find(params[:conversation_id])
+      end
+
+      def user_conversations
+        @user_conversations ||= UserConversationsQuery.for_user(current_user.id)
       end
     end
   end

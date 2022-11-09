@@ -62,7 +62,7 @@ resource 'Targets' do
         example 'Unsuccessful delete' do
           do_request(request)
 
-          expect(status).to eq 400
+          expect(status).to eq 404
         end
       end
     end

@@ -52,7 +52,7 @@ RSpec.describe 'Target', type: :request do
         before { subject }
 
         it 'returns bad request status' do
-          expect(response).to have_http_status(:bad_request)
+          expect(response).to have_http_status(:not_found)
         end
 
         it 'returns an error message' do

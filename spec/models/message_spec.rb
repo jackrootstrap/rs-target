@@ -40,4 +40,9 @@ RSpec.describe Message, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:conversation) }
   end
+
+  describe 'index' do
+    it { is_expected.to have_db_index(:conversation_id) }
+    it { is_expected.to have_db_index(:user_id) }
+  end
 end
