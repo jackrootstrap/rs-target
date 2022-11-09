@@ -25,4 +25,8 @@ class Conversation < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   validates :topic, uniqueness: { scope: %i[receiver_id sender_id] }
+
+  def recipient(user)
+    self.sender_id == user.id ? self.receiver : self.sender
+  end
 end

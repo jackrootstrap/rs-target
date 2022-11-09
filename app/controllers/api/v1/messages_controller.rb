@@ -4,13 +4,13 @@ module Api
   module V1
     class MessagesController < ApiController
       def create
-        @message = conversation.messages.create!(body: message_params[:body], user_id: current_user.id)
+        @message = MessageService::Creator(conversation, body_message, current_user)
       end
 
       private
 
-      def message_params
-        @message_params ||= params.permit(:body)
+      def body_message
+        @body_message ||= params.permit(:body)
       end
 
       def conversation
