@@ -7,6 +7,7 @@ class ApiController < ActionController::API
 
   rescue_from Exception,                         with: :render_default_exception
   rescue_from ActiveRecord::RecordInvalid,       with: :render_invalid
+  rescue_from ActiveRecord::RecordNotFound,      with: :render_not_found
 
   private
 
@@ -16,5 +17,9 @@ class ApiController < ActionController::API
 
   def render_default_exception(exception)
     render json: { errors: exception.message }, status: :bad_request
+  end
+
+  def render_not_found(exception)
+    render json: { errors: exception.message }, status: :not_found
   end
 end

@@ -22,6 +22,7 @@ class Conversation < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
   belongs_to :topic
+  has_many :messages, dependent: :destroy
 
   validates :topic, uniqueness: { scope: %i[receiver_id sender_id] }
 end
